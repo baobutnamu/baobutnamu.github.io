@@ -84,28 +84,28 @@
             var scrollTop = document.documentElement.scrollTop;
             // console.log(distanceToTop, elementHeight, scrollTop)
             var opacity = 1;
-            if(scrollTop > distanceToTop) {
-                opacity = 1 - (scrollTop - distanceToTop) / elementHeight;
+            if(scrollTop > distanceToTop && locations < 4){
+                opacity = 2 - ((scrollTop - distanceToTop) / elementHeight) / 2;
                 // console.log(1 - (scrollTop - distanceToTop) / elementHeight)
-            } else if(scrollTop <= distanceToTop) {
-                opacity = 1 + (((scrollTop - distanceToTop) / elementHeight) / 5);
+            } else if(scrollTop <= distanceToTop){
+                opacity = 1.2 + (((scrollTop - distanceToTop) / elementHeight) / 3);
                 // console.log("Hello", 1 + (((scrollTop - distanceToTop) / elementHeight) / 5))
             }
-            if(opacity < 0){
+            if(opacity < 0.1){
                 opacity = 0;
             }
-            if(opacity >= 0.6 && locations == 0){
-                locations = 1;
-            }
-            if(opacity >= 0.6 && locations == 2){
-                locations = 3;
-            }
-            if(opacity <= 0.4 && locations == 1){
-                locations = 2;
-            }
-            if(opacity <= 0.4 && locations == 3){
-                locations = 4;
-            }
+            // if(opacity >= 0.6 && locations == 0){
+            //     locations = 1;
+            // }
+            // if(opacity >= 0.6 && locations == 2){
+            //     locations = 3;
+            // }
+            // if(opacity <= 0.1 && locations == 1){
+            //     locations = 2;
+            // }
+            // if(opacity <= 0.1 && locations == 3){
+            //     locations = 4;
+            // }
             if(opacity >= 0) {
                 element.style.opacity = opacity;
             }
@@ -115,16 +115,19 @@
             console.log("1", oasis1.style.opacity)
             console.log("2", oasis2.style.opacity)
             console.log("3", oasis3.style.opacity)
-            if(locations == 0 || locations == 1){
-                fadeOutOnScroll(oasis1);
-                console.log("11111111111111")
-            } else if(locations == 2 || locations == 3){
-                fadeOutOnScroll(oasis2);
-                console.log("22222222222222")
-            } else if(locations == 4 || locations == 5){
-                fadeOutOnScroll(oasis3);
-                console.log("33333333333333")
-            }
+            // if(locations == 0 || locations == 1){
+            //     fadeOutOnScroll(oasis1);
+            //     console.log("11111111111111")
+            // } else if(locations == 2 || locations == 3){
+            //     fadeOutOnScroll(oasis2);
+            //     console.log("22222222222222")
+            // } else if(locations == 4 || locations == 5){
+            //     fadeOutOnScroll(oasis3);
+            //     console.log("33333333333333")
+            // }
+            fadeOutOnScroll(oasis1);
+            fadeOutOnScroll(oasis2);
+            fadeOutOnScroll(oasis3);
         }
         window.addEventListener('scroll', scrollHandler);
     </script>
