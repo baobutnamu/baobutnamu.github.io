@@ -15,6 +15,7 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        @import url('https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.css');
         html, body{
             margin: 0;
             padding: 0;
@@ -22,7 +23,6 @@
             text-align: center;
             color: white;
             background-color: #010101;
-            word-break: keep-all;
         }
         h1{
             font-weight: bold !important;
@@ -32,29 +32,75 @@
             font-family: 'Pretendard', sans-serif !important;
             font-weight: bold !important;
         }
-        .css-selector {
+        .background{
+            background-image: url("https://findflag.kr/background-gif.gif");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: darken;
+            background-color: #00000099;
+        }
+        .animations{
             background: linear-gradient(90deg, #fc3d39, #fd9426, #fecb2e, #53d769, #5fc9f8, #147efb);
             background-size: 1200% 1200%;
-
-            -webkit-animation: animations 20s ease infinite;
-            -moz-animation: animations 20s ease infinite;
-            animation: animations 20s ease infinite;
+            -webkit-animation: animations 10s ease infinite;
+            -moz-animation: animations 10s ease infinite;
+            animation: animations 10s ease infinite;
         }
-
-        @-webkit-keyframes animations {
+        @-webkit-keyframes animations{
             0%{background-position:0% 50%}
             50%{background-position:100% 50%}
             100%{background-position:0% 50%}
         }
-        @-moz-keyframes animations {
+        @-moz-keyframes animations{
             0%{background-position:0% 50%}
             50%{background-position:100% 50%}
             100%{background-position:0% 50%}
         }
-        @keyframes animations {
+        @keyframes animations{
             0%{background-position:0% 50%}
             50%{background-position:100% 50%}
             100%{background-position:0% 50%}
+        }
+        .movePointerRight{
+            -webkit-animation: moving1 2s ease infinite;
+            -moz-animation: moving1 2s ease infinite;
+            animation: moving1 2s ease infinite;
+        }
+        @-webkit-keyframes moving1{
+            0%{margin-left: 0px}
+            50%{margin-left: 20px}
+            100%{margin-left: 0px}
+        }
+        @-moz-keyframes moving1{
+            0%{margin-left: 0px}
+            50%{margin-left: 20px}
+            100%{margin-left: 0px}
+        }
+        @keyframes moving1{
+            0%{margin-left: 0px}
+            50%{margin-left: 20px}
+            100%{margin-left: 0px}
+        }
+        .movePointerLift{
+            -webkit-animation: moving2 2s ease infinite;
+            -moz-animation: moving2 2s ease infinite;
+            animation: moving2 2s ease infinite;
+        }
+        @-webkit-keyframes moving2{
+            0%{margin-right: 0px}
+            50%{margin-right: 20px}
+            100%{margin-right: 0px}
+        }
+        @-moz-keyframes moving2{
+            0%{margin-right: 0px}
+            50%{margin-right: 20px}
+            100%{margin-right: 0px}
+        }
+        @keyframes moving2{
+            0%{margin-right: 0px}
+            50%{margin-right: 20px}
+            100%{margin-right: 0px}
         }
     </style>
 </head>
@@ -62,17 +108,20 @@
     <script>
         AOS.init();
     </script>
-    <!-- <div style="text-align: left; display: inline-block;"> -->
-        <div class="css-selector" style="height: 100vh; position: relative; width: 100vw;">
+    <div style="text-align: center; display: inline-block;">
+        <div class="background" style="height: 100vh; position: relative; width: 100vw;">
             <div style="display: inline-block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
                 <div data-aos="fade-up" data-aos-duration="1500" data-aos-easing="ease-out-expo" style="text-align: center;">
-                    <h1 style="font-size: 100px; margin-bottom: -20px;">바오벗나무</h1>
-                    <h1 style="font-size: 80px; margin-top: -10px;">BaoButNamu</h1>
+                    <h1 style="font-size: 100px; margin-bottom: -20px; word-break: keep-all;">바오벗나무</h1>
+                    <h1 style="font-size: 80px; margin-top: -10px; word-break: keep-all;">BaoButNamu</h1>
                 </div>
             </div>
         </div>
         <div style="text-align: center; display: inline-block; width: 92vw;">
             <div style="display: inline-block; width: fit-content; text-align: left;">
+                <div data-aos="fade-up" data-aos-easing="ease-out-expo" style="text-align: center; cursor: pointer;" onclick="window.open('https://baobutnamu.github.io/recruiting')">
+                    <h1 class="animations"><a class="movePointerLift">→</a> 현재 모집 중인 직군 보기 <a class="movePointerRight">←</a></h1>
+                </div>
                 <div data-aos="fade-up" data-aos-easing="ease-out-expo">
                     <h1><a style="color: #fc3d39;">바오벗나무</a>는</h1>
                 </div>
@@ -150,6 +199,6 @@
                 </div>
             </div>
         </div>
-    <!-- </div> -->
+    </div>
 </body>
 </html>
