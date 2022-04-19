@@ -36,39 +36,92 @@
     <script>
         AOS.init();
     </script>
-    <div style="background-image: url('background1.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover; background-blend-mode: darken; background-color: rgba(0, 0, 0, 0.5); height: 100vh; position: relative;">
+    <div style="background-image: url('background-1.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover; background-blend-mode: darken; background-color: rgba(0, 0, 0, 0.5); height: 100vh; position: relative;">
         <div style="display: inline-block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: fit-content;">
             <div data-aos="fade-up" data-aos-duration="1500" data-aos-easing="ease-out-expo">
                 <h1>당신도 더 좋은 세상을<br>만들고 싶으신가요?</h1>
             </div>
         </div>
     </div>
-    <div style="background-image: url('background2.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover; background-blend-mode: darken; background-color: rgba(0, 0, 0, 0.5);">
+    <div style="background-image: url('background-2.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover; background-blend-mode: darken; background-color: rgba(0, 0, 0, 0.5);">
         <div style="height: 100vh; position: relative;">
             <div style="display: inline-block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: fit-content;">
-                <div data-aos="fade-up" data-aos-duration="1000">
-                    <h1>사막 한가운데에 있는<br>오아시스처럼.</h1>
-                </div>
-            </div>
-        </div>
-        <div style="height: 10vh; position: relative;">
-            <div style="display: inline-block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: fit-content;">
-                <div data-aos="fade-up" data-aos-duration="1000">
-                    <h1>우리는 희망을 만들어요.</h1>
+                <div style="opacity: 0.001;" id="oasis1" class="fade">
+                    <h1>우리의 능력으로<br>더 좋은 세상 만들기.</h1>
                 </div>
             </div>
         </div>
         <div style="height: 100vh; position: relative;">
             <div style="display: inline-block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: fit-content;">
-                <div data-aos="fade-up" data-aos-duration="1000">
+                <div style="opacity: 0.001;" id="oasis2" class="fade">
+                    <h1>이걸 달성하기 위해<br>우리가 모였죠.</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="background-image: url('background-3.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover; background-blend-mode: darken; background-color: rgba(0, 0, 0, 0.5);">
+        <div style="height: 100vh; position: relative;">
+            <div style="display: inline-block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: fit-content;">
+                <div style="opacity: 0.001;" id="oasis3" class="fade">
+                    <h1>사막의 한 줄기 희망인<br>오아시스처럼.</h1>
+                </div>
+            </div>
+        </div>
+        <div style="height: 100vh; position: relative;">
+            <div style="display: inline-block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: fit-content;">
+                <div style="opacity: 0.001;" id="oasis4" class="fade">
                     <h1>당신도 더 좋은 세상을<br>만들고 싶으신가요?</h1>
-                </div>
-                <br>
-                <div data-aos="fade-up" data-aos-duration="1000">
+                    <br>
                     <button type="button" class="btn btn-light" onclick="window.open('https://baobutnamu.github.io/recruiting/')">바오벗나무 상시모집 지원하기</button>
                 </div>
             </div>
         </div>
     </div>
+    <div style="background-image: url('background-4.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover; background-blend-mode: darken; background-color: rgba(0, 0, 0, 0.5); height: 100vh; position: relative;">
+        <div style="display: inline-block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: fit-content;">
+            <div style="opacity: 0.001;" id="oasis5" class="fade">
+                <p>바오벗나무는 더 좋은 세상을 만들고 싶어하는 4명의 사람이 모여서 만들어진 팀입니다.</p>
+                <p>저희와 연락하고 싶으시다면, baobutnamu@gmail.com으로 이메일을 남겨주세요.</p>
+                <p>Copyright © 2022 바오벗나무. 모든 권리 보유.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var oasis1 = document.getElementById('oasis1');
+        var oasis2 = document.getElementById('oasis2');
+        var oasis3 = document.getElementById('oasis3');
+        var oasis4 = document.getElementById('oasis4');
+        var oasis5 = document.getElementById('oasis5');
+        var locations = 0;
+        function fadeOutOnScroll(element) {
+            if (!element) {
+                return;
+            }
+            var distanceToTop = window.pageYOffset - 400 + element.getBoundingClientRect().top;
+            var elementHeight = element.offsetHeight;
+            var scrollTop = document.documentElement.scrollTop;
+            var opacity = 1;
+            if(scrollTop > distanceToTop && locations < 4){
+                opacity = 2 - ((scrollTop - distanceToTop) / elementHeight) / 2;
+            } else if(scrollTop <= distanceToTop){
+                opacity = 1.2 + (((scrollTop - distanceToTop) / elementHeight) / 3);
+            }
+            if(opacity < 0.1){
+                opacity = 0;
+            }
+            if(opacity >= 0) {
+                element.style.opacity = opacity;
+            }
+            console.log("Locations : ", locations)
+        }
+        function scrollHandler() {
+            fadeOutOnScroll(oasis1);
+            fadeOutOnScroll(oasis2);
+            fadeOutOnScroll(oasis3);
+            fadeOutOnScroll(oasis4);
+            fadeOutOnScroll(oasis5);
+        }
+        window.addEventListener('scroll', scrollHandler);
+    </script>
 </body>
 </html>
