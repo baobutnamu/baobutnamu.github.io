@@ -48,6 +48,24 @@
             background-position: center;
             background-blend-mode: darken;
             /* background-color: #00000055; */
+            -webkit-animation: backgrounds 3s ease;
+            -moz-animation: backgrounds 3s ease;
+            animation: backgrounds 3s ease;
+        }
+        @-webkit-keyframes backgrounds{
+            0%{background-color: #000000FF;}
+            50%{background-color: #000000FF;}
+            100%{background-color: #00000000;}
+        }
+        @-moz-keyframes backgrounds{
+            0%{background-color: #000000FF;}
+            50%{background-color: #000000FF;}
+            100%{background-color: #00000000;}
+        }
+        @keyframes backgrounds{
+            0%{background-color: #000000FF;}
+            50%{background-color: #000000FF;}
+            100%{background-color: #00000000;}
         }
         @-webkit-keyframes progress-bar-stripes{
             0%{
