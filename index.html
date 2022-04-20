@@ -48,27 +48,56 @@
             background-blend-mode: darken;
             /* background-color: #00000055; */
         }
-        .animations{
-            background: linear-gradient(90deg, #fc3d39, #fd9426, #fecb2e, #53d769, #5fc9f8, #147efb);
-            background-size: 1200% 1200%;
-            -webkit-animation: animations 10s ease infinite;
-            -moz-animation: animations 10s ease infinite;
-            animation: animations 10s ease infinite;
+        @-webkit-keyframes progress-bar-stripes{
+            0%{
+                background-position-x: 3rem;
+            }
         }
-        @-webkit-keyframes animations{
-            0%{background-position:0% 50%}
-            50%{background-position:100% 50%}
-            100%{background-position:0% 50%}
+        @keyframes progress-bar-stripes{
+            0%{
+                background-position-x: 3rem;
+            }
         }
-        @-moz-keyframes animations{
-            0%{background-position:0% 50%}
-            50%{background-position:100% 50%}
-            100%{background-position:0% 50%}
+        .progress{
+            display: flex;
+            height: 1rem;
+            overflow: hidden;
+            font-size: 0.75rem;
+            background-color: #e9ecef;
+            border-radius: 0.25rem;
+            height: 100px;
         }
-        @keyframes animations{
-            0%{background-position:0% 50%}
-            50%{background-position:100% 50%}
-            100%{background-position:0% 50%}
+        .progress-bar{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            background-color: #0d6efd;
+            transition: width 0.6s ease;
+            height: 100px;
+            width: 100vw;
+        }
+        @media (prefers-reduced-motion: reduce){
+            .progress-bar{
+                transition: none;
+            }
+        }
+        .progress-bar-striped{
+            background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+            background-size: 3rem 3rem;
+        }
+        .progress-bar-animated{
+            -webkit-animation: 1s linear infinite progress-bar-stripes;
+            animation: 1s linear infinite progress-bar-stripes;
+        }
+        @media (prefers-reduced-motion: reduce){
+            .progress-bar-animated{
+                -webkit-animation: none;
+                animation: none;
+            }
         }
         .movePointerRight{
             -webkit-animation: moving1 2s ease infinite;
@@ -123,6 +152,12 @@
             .recruiting{
                 font-size: 30px;
             }
+            .progress-bar{
+                height: 37.5px;
+            }
+            .progress{
+                height: 37.5px;
+            }
         }
     </style>
 </head>
@@ -142,7 +177,12 @@
         <div style="text-align: center; display: inline-block; width: 92vw;">
             <div style="display: inline-block; width: fit-content; text-align: left;">
                 <div data-aos="fade-up" data-aos-easing="ease-out-expo" style="text-align: center; cursor: pointer;" onclick="window.open('https://baobutnamu.github.io/recruiting')">
-                    <h1 class="animations recruiting"><a class="movePointerLift">→</a> 팀원 절찬 모집 중 <a class="movePointerRight">←</a></h1>
+                    <br><br><br><br>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%">
+                            <h1 class="recruiting animations">현재 팀원 모집 중</h1>
+                        </div>
+                    </div>
                 </div>
                 <div data-aos="fade-up" data-aos-easing="ease-out-expo">
                     <h1><a style="color: #fc3d39;">바오벗나무</a>는</h1>
@@ -214,7 +254,10 @@
                     <h1>이게 <a style="color: #fc3d39;">바오벗나무</a>니깐.</h1>
                 </div>
                 <div data-aos="fade-up" data-aos-easing="ease-out-expo">
-                    <h1>마지막으로 <a style="color: #5fc9f8;">카피라이트</a>도 <a style="color: #147efb;">세상 힙하게</a>.</h1>
+                    <h1>우리와 함께 작업하고 싶다면 <a style="color: #147efb; text-decoration: underline; cursor: pointer;" onclick="window.open('https://baobutnamu.github.io/recruiting')">리크루팅 소개 페이지</a>로.</h1>
+                </div>
+                <div data-aos="fade-up" data-aos-easing="ease-out-expo">
+                    <h1>마지막으로 <a style="color: #5fc9f8;">카피라이트</a>도 <a style="color: #ed0086;">세상 힙하게</a>.</h1>
                 </div>
                 <div data-aos="fade-up" data-aos-easing="ease-out-expo">
                     <h1>Copyright © 2022 바오벗나무. 모든 권리 보유.</h1>
