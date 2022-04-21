@@ -41,17 +41,16 @@
             font-family: 'Pretendard', sans-serif !important;
             font-weight: bold !important;
         }
-        /* .background{
-            background-image: url("https://findflag.kr/backgroundimage.jpg");
+        .background{
+            background-image: url("https://findflag.kr/backgroundimage.gif");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
-            background-blend-mode: darken; */
-            /* background-color: #00000055; */
-            /* -webkit-animation: backgrounds 3s ease;
-            -moz-animation: backgrounds 3s ease;
-            animation: backgrounds 3s ease; */
-        /* } */
+            background-blend-mode: darken;
+            -webkit-animation: backgrounds 1s ease;
+            -moz-animation: backgrounds 1s ease;
+            animation: backgrounds 1s ease;
+        }
         @-webkit-keyframes backgrounds{
             0%{background-color: #000000FF;}
             50%{background-color: #000000FF;}
@@ -206,11 +205,8 @@
         AOS.init();
     </script>
     <div style="text-align: center; align-items: center; display: inline-block; overflow: hidden;">
-        <div id="top" class="background" style="height: 100vh; position: relative; width: 100vw; overflow: hidden;">
-            <video id="video" muted autoplay playsinline loop style="overflow: hidden;" poster="https://findflag.kr/backgroundimage.jpg" src="https://findflag.kr/backgroundvideo.mp4" type="video/mp4"></video>
-            <!-- <video preload="metadata" muted autoplay loop style="height: 100vh;">
-                <source src="https://findflag.kr/backgroundvideo.mp4#t=0.5" type="video/mp4">
-            </video> -->
+        <div id="top" style="height: 100vh; position: relative; width: 100vw; overflow: hidden;">
+            <video id="video" muted autoplay loop playsinline style="overflow: hidden;" poster="https://findflag.kr/backgroundimage.jpg" src="https://findflag.kr/backgroundvideo.mp4" type="video/mp4"></video>
             <div style="display: inline-block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
                 <div data-aos="fade-up" data-aos-duration="1500" data-aos-easing="ease-out-expo" style="text-align: center;">
                     <h1 class="min" style="word-break: keep-all;">바오벗나무</h1>
@@ -374,6 +370,14 @@
             document.getElementById("video").style.width = "100vw"
         } else{
             document.getElementById("video").style.height = "100vh"
+        }
+        var promise = document.querySelector('video').play();
+
+        if (promise !== undefined) {
+            promise.catch(error => {
+                document.getElementById("video").style.display = "none";
+                document.getElementById("top").className = "background";
+            });
         }
     </script>
 </body>
