@@ -346,21 +346,21 @@
                     running = true;
                     var myTimer = setTimeout(function(){
                         running = false;
-                    }, 700);
+                    }, 1200);
                     var scrollPosition = $("#bottom").offset().top;
                     $("html").animate({
                         scrollTop: scrollPosition
-                    }, 500);
+                    }, 1000);
                     testScroll = true;
                     console.log("GOGO")
                 } else if($(document).scrollTop() < $("#top").height() && testScroll == true){
                     running = true;
                     var myTimer = setTimeout(function(){
                         running = false;
-                    }, 700);
+                    }, 1200);
                     $("html").animate({
                         scrollTop: 0
-                    }, 500);
+                    }, 1000);
                     console.log("ERR")
                     testScroll = false;
                 }
