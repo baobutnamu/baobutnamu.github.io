@@ -188,7 +188,7 @@
         AOS.init();
     </script>
     <div style="text-align: center; display: inline-block;">
-        <div class="background" style="height: 100vh; position: relative; width: 100vw;">
+        <div id="top" class="background" style="height: 100vh; position: relative; width: 100vw;">
             <div style="display: inline-block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
                 <div data-aos="fade-up" data-aos-duration="1500" data-aos-easing="ease-out-expo" style="text-align: center;">
                     <h1 class="min" style="word-break: keep-all;">바오벗나무</h1>
@@ -196,7 +196,7 @@
                 </div>
             </div>
         </div>
-        <div style="text-align: center; display: inline-block; width: 92vw;">
+        <div id="bottom" style="text-align: center; display: inline-block; width: 92vw;">
             <div style="display: inline-block; width: fit-content; text-align: left;">
                 <div data-aos="fade-up" data-aos-easing="ease-out-expo" style="text-align: center; cursor: pointer;" onclick="window.open('https://baobutnamu.kr/recruiting')">
                     <div class="progress">
@@ -310,6 +310,35 @@
         console.log("%c아, 지원은 어디에서 하냐구요?", "font-size: 30px; color: #53d769; font-family: 'Pretendard' !important; font-weight: bold;");
         console.log("%c아래 링크에서 지원할 수 있어요!", "font-size: 30px; color: #5fc9f8; font-family: 'Pretendard' !important; font-weight: bold;");
         console.log("%chttps://baobutnamu.kr/recruiting/apply", "font-size: 30px; color: #8e8e93; font-family: 'Pretendard' !important; font-weight: bold;");
+        var testScroll = false;
+        var running = false;
+        $(window).scroll(function(){
+            if(running == false){
+                console.log($("#top").height(), $(document).scrollTop(), testScroll)
+                if($(document).scrollTop() < ($("#top").height() / 2) && testScroll == false){
+                    running = true;
+                    var myTimer = setTimeout(function(){
+                        running = false;
+                    }, 700);
+                    var scrollPosition = $("#bottom").offset().top;
+                    $("html").animate({
+                        scrollTop: scrollPosition
+                    }, 500);
+                    testScroll = true;
+                    console.log("GOGO")
+                } else if($(document).scrollTop() < $("#top").height() && testScroll == true){
+                    running = true;
+                    var myTimer = setTimeout(function(){
+                        running = false;
+                    }, 700);
+                    $("html").animate({
+                        scrollTop: 0
+                    }, 500);
+                    console.log("ERR")
+                    testScroll = false;
+                }
+            }
+		});
     </script>
 </body>
 </html>
