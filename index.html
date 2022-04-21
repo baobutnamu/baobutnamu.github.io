@@ -41,17 +41,17 @@
             font-family: 'Pretendard', sans-serif !important;
             font-weight: bold !important;
         }
-        .background{
-            background-image: url("https://findflag.kr/backgroundimage.gif");
+        /* .background{
+            background-image: url("https://findflag.kr/backgroundimage.jpg");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
-            background-blend-mode: darken;
+            background-blend-mode: darken; */
             /* background-color: #00000055; */
             /* -webkit-animation: backgrounds 3s ease;
             -moz-animation: backgrounds 3s ease;
             animation: backgrounds 3s ease; */
-        }
+        /* } */
         @-webkit-keyframes backgrounds{
             0%{background-color: #000000FF;}
             50%{background-color: #000000FF;}
@@ -120,6 +120,24 @@
                 animation: none;
             }
         }
+        video{
+            opacity: 0.5;
+            -webkit-animation: opacitys 1s ease;
+            -moz-animation: opacitys 1s ease;
+            animation: opacitys 1s ease;
+        }
+        @-webkit-keyframes opacitys{
+            0%{opacity: 0}
+            100%{opacity: 0.5}
+        }
+        @-moz-keyframes opacitys{
+            0%{opacity: 0}
+            100%{opacity: 0.5}
+        }
+        @keyframes opacitys{
+            0%{opacity: 0}
+            100%{opacity: 0.5}
+        }
         .movePointerRight{
             -webkit-animation: moving1 2s ease infinite;
             -moz-animation: moving1 2s ease infinite;
@@ -187,8 +205,12 @@
     <script>
         AOS.init();
     </script>
-    <div style="text-align: center; display: inline-block;">
-        <div id="top" class="background" style="height: 100vh; position: relative; width: 100vw;">
+    <div style="text-align: center; align-items: center; display: inline-block; overflow: hidden;">
+        <div id="top" class="background" style="height: 100vh; position: relative; width: 100vw; overflow: hidden;">
+            <video id="video" muted autoplay loop style="overflow: hidden;" src="https://findflag.kr/backgroundvideo.mp4" type="video/mp4"></video>
+            <!-- <video preload="metadata" muted autoplay loop style="height: 100vh;">
+                <source src="https://findflag.kr/backgroundvideo.mp4#t=0.5" type="video/mp4">
+            </video> -->
             <div style="display: inline-block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
                 <div data-aos="fade-up" data-aos-duration="1500" data-aos-easing="ease-out-expo" style="text-align: center;">
                     <h1 class="min" style="word-break: keep-all;">바오벗나무</h1>
@@ -240,7 +262,16 @@
                     <h1>사람들이 모여있는 팀.</h1>
                 </div>
                 <div data-aos="fade-up" data-aos-easing="ease-out-expo">
-                    <h1>모든 작업은 <a style="color: #fc3158;">오픈소스</a>로.</h1>
+                    <h1>사막의 한 줄기 <a style="color: #5fc9f8;">희망</a>인 오아시스처럼</h1>
+                </div>
+                <div data-aos="fade-up" data-aos-easing="ease-out-expo">
+                    <h1>우리가 사회의 <a style="color: #5fc9f8;">희망</a>이 되는.</h1>
+                </div>
+                <div data-aos="fade-up" data-aos-easing="ease-out-expo">
+                    <h1>사회에 더 많은 도움이 되도록</h1>
+                </div>
+                <div data-aos="fade-up" data-aos-easing="ease-out-expo">
+                    <h1>모든 공익 작업은 <a style="color: #fc3158;">오픈소스</a>로.</h1>
                 </div>
                 <div data-aos="fade-up" data-aos-easing="ease-out-expo">
                     <h1>좋은 것은 공유하고 안좋은 것은 우리가 바꾸는.</h1>
@@ -339,6 +370,11 @@
                 }
             }
 		});
+        if(window.innerHeight * 16 < window.innerWidth * 9){
+            document.getElementById("video").style.width = "100vw"
+        } else{
+            document.getElementById("video").style.height = "100vh"
+        }
     </script>
 </body>
 </html>
